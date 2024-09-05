@@ -1,16 +1,16 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import qs from 'query-string';
+import { useEffect, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
 import { useRouter } from 'next/navigation';
 import { Search } from 'lucide-react';
+import qs from 'query-string';
+
 import { Input } from '@/components/ui/input';
 
-type SearchInputProps = {};
-
-const SearchInput: React.FC<SearchInputProps> = ({}) => {
+const SearchInput = () => {
   const [value, setValue] = useState('');
+
   const [debounceValue] = useDebounceValue(value, 500);
   const router = useRouter();
 

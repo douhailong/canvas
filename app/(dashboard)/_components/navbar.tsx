@@ -5,17 +5,31 @@ import {
   UserButton,
   useOrganization
 } from '@clerk/nextjs';
-import React from 'react';
+
 import SearchInput from './search-input';
 import InviteButton from './invite-button';
 
-type NavbarProps = {};
+const rootBox = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  maxWidth: '376px'
+};
+const organizationSwitcherTrigger = {
+  padding: '6px',
+  width: '100%',
+  borderRadius: '8px',
+  border: '1px solid #e5e7eb',
+  justifyContent: 'space-between',
+  backgroundColor: 'white'
+};
 
-const Navbar: React.FC<NavbarProps> = ({}) => {
+const Navbar = () => {
   const { organization } = useOrganization();
 
   return (
-    <div className='flex items-center space-x-3 p-5'>
+    <header className='flex items-center space-x-3 p-5'>
       <div className='hidden lg:flex lg:flex-1'>
         <SearchInput />
       </div>
@@ -24,28 +38,15 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
           hidePersonal
           appearance={{
             elements: {
-              rootBox: {
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '100%',
-                maxWidth: '376px'
-              },
-              organizationSwitcherTrigger: {
-                padding: '6px',
-                width: '100%',
-                borderRadius: '8px',
-                border: '1px solid #e5e7eb',
-                justifyContent: 'space-between',
-                backgroundColor: 'white'
-              }
+              rootBox,
+              organizationSwitcherTrigger
             }
           }}
         />
       </div>
       {organization && <InviteButton />}
       <UserButton />
-    </div>
+    </header>
   );
 };
 

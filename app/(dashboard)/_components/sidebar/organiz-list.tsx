@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
 import { useOrganizationList, useOrganization } from '@clerk/nextjs';
-import { cn } from '@/lib/utils';
+
 import Hint from '@/components/ui/hint';
+import { cn } from '@/lib/utils';
 
 type ItemProps = {
   id: string;
@@ -36,9 +36,7 @@ const Item: React.FC<ItemProps> = ({ id, name, imageUrl }) => {
   );
 };
 
-type OrgListProps = {};
-
-const OrgList: React.FC<OrgListProps> = ({}) => {
+const OrganizList = () => {
   const { userMemberships } = useOrganizationList({
     userMemberships: {
       infinite: true
@@ -61,4 +59,4 @@ const OrgList: React.FC<OrgListProps> = ({}) => {
   );
 };
 
-export default OrgList;
+export default OrganizList;

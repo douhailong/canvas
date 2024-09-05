@@ -1,20 +1,35 @@
 'use client';
-import React from 'react';
-import { Poppins } from 'next/font/google';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { Poppins } from 'next/font/google';
+import { useSearchParams } from 'next/navigation';
 import { OrganizationSwitcher } from '@clerk/nextjs';
 import { LayoutDashboard, Star } from 'lucide-react';
+
 import { buttonVariants } from '@/components/ui/button';
-import { useSearchParams } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 const font = Poppins({ weight: '600', subsets: ['latin'] });
 
-type OrgSidebarProps = {};
+const rootBox = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%'
+};
+const organizationSwitcherTrigger = {
+  padding: '6px',
+  width: '100%',
+  borderRadius: '8px',
+  border: '1px solid #e5e7eb',
+  justifyContent: 'space-between',
+  backgroundColor: 'white'
+};
 
-const OrgSidebar: React.FC<OrgSidebarProps> = ({}) => {
+const OrgSidebar = () => {
   const searchParams = useSearchParams();
+
   const favorites = searchParams.get('favorites');
 
   return (
@@ -27,20 +42,8 @@ const OrgSidebar: React.FC<OrgSidebarProps> = ({}) => {
         hidePersonal
         appearance={{
           elements: {
-            rootBox: {
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%'
-            },
-            organizationSwitcherTrigger: {
-              padding: '6px',
-              width: '100%',
-              borderRadius: '8px',
-              border: '1px solid #e5e7eb',
-              justifyContent: 'space-between',
-              backgroundColor: 'white'
-            }
+            rootBox,
+            organizationSwitcherTrigger
           }
         }}
       />

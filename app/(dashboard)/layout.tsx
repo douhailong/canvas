@@ -1,23 +1,19 @@
-import React from 'react';
-import SideBar from './_components/sidebar';
+import type { PropsWithChildren } from 'react';
+
+import { SideBar, OrganizSideBar } from './_components/sidebar';
 import Navbar from './_components/navbar';
-import OrgSidebar from './_components/sidebar/org-sidebar';
 
-type LayoutProps = { children: React.ReactNode };
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  return (
-    <main className='h-full'>
-      <SideBar />
-      <div className='flex h-full pl-[60px]'>
-        <OrgSidebar />
-        <div className='h-full flex-1'>
-          <Navbar />
-          {children}
-        </div>
+const Layout = ({ children }: PropsWithChildren) => (
+  <main className='h-full'>
+    <SideBar />
+    <div className='flex h-full pl-[60px]'>
+      <OrganizSideBar />
+      <div className='h-full flex-1'>
+        <Navbar />
+        {children}
       </div>
-    </main>
-  );
-};
+    </div>
+  </main>
+);
 
 export default Layout;
