@@ -2,18 +2,28 @@
 
 import { useOrganization } from '@clerk/nextjs';
 
-import { OrganizEmpty } from './_components/empty';
+import { EmptyOrganiz } from './_components/empty';
+import CanvasList from './_components/canvas-list';
 
-type PageProps = {};
+type PageProps = {
+  searchParams: {
+    query?: string;
+    favorites?: string;
+  };
+};
 
-const Page: React.FC<PageProps> = ({}) => {
+const Page: React.FC<PageProps> = ({ searchParams }) => {
   const { organization } = useOrganization();
 
   console.log(organization);
 
   return (
     <div className='h-[calc(100%-80px)] p-6'>
-      {organization ? <p>list</p> : <OrganizEmpty />}
+      {organization ? (
+        <CanvasList orgId={organization.id} query={searchParams} />
+      ) : (
+        <EmptyOrganiz />
+      )}
     </div>
   );
 };

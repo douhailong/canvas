@@ -59,7 +59,7 @@ const OrgSidebar = () => {
           )}
         >
           <LayoutDashboard className='mr-2 h-4 w-4' />
-          Team boards
+          Team canvas
         </Link>
         <Link
           href={{
@@ -77,7 +77,7 @@ const OrgSidebar = () => {
           )}
         >
           <Star className='mr-2 h-4 w-4' />
-          Favorite boards
+          Favorite canvas
         </Link>
       </div>
     </div>
