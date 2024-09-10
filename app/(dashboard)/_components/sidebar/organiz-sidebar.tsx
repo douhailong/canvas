@@ -35,7 +35,7 @@ const OrgSidebar = () => {
   return (
     <div className='hidden w-[206px] flex-col space-y-6 pl-5 pt-5 lg:flex'>
       <Link href='/' className='flex items-center gap-x-2'>
-        <Image src='/next.svg' alt='logo' height={60} width={60} />
+        <Image src='/logo.svg' alt='logo' height={30} width={30} />
         <h1 className={cn('text-2xl font-semibold', font.className)}>Canvas</h1>
       </Link>
       <OrganizationSwitcher
