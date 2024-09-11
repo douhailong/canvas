@@ -15,8 +15,6 @@ type PageProps = {
 const Page: React.FC<PageProps> = ({ searchParams }) => {
   const { organization } = useOrganization();
 
-  console.log(organization);
-
   return (
     <div className='h-[calc(100%-80px)] p-6'>
       {organization ? (

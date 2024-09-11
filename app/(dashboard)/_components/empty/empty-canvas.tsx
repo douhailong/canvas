@@ -12,9 +12,6 @@ import { toast } from 'sonner';
 const EmptyCanvas = () => {
   const { organization } = useOrganization();
   const create = useMutation(api.board.create);
-  // const { mutate, pending } = useApiMutation(api.board.create);
-
-  // console.log(pending, '----------------');
 
   const onClick = () => {
     if (!organization) return;
@@ -24,7 +21,7 @@ const EmptyCanvas = () => {
       orgId: organization.id
     })
       .then(() => toast.success('Board created'))
-      .catch(() => toast.error('Board created'));
+      .catch(() => toast.error('Failed to create board'));
   };
 
   return (
