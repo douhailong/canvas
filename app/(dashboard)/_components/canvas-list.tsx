@@ -2,6 +2,7 @@ import { useQuery } from 'convex/react';
 
 import { api } from '@/convex/_generated/api';
 import { EmptyCanvas, EmptyFavorites, EmptyQuery } from './empty';
+import BoardCard from './board-card';
 
 type CanvasListProps = {
   orgId: string;
@@ -13,8 +14,6 @@ type CanvasListProps = {
 
 const CanvasList: React.FC<CanvasListProps> = ({ orgId, query }) => {
   const data = useQuery(api.boards.get, { orgId });
-
-  console.log(data, '000');
 
   if (data === undefined) {
     return <div>Loading...</div>;
@@ -39,7 +38,7 @@ const CanvasList: React.FC<CanvasListProps> = ({ orgId, query }) => {
       </h2>
       <ul className='mt-8 grid grid-cols-1 gap-5 pb-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
         {data.map(board => (
-          <div key={board._id}>11</div>
+          <BoardCard key={board._id} />
         ))}
       </ul>
     </div>

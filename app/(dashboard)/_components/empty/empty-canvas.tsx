@@ -29,7 +29,7 @@ const EmptyCanvas = () => {
 
   return (
     <div className='flex h-full flex-col items-center justify-center'>
-      <Image src='/empty-canvas.svg' alt='empty' width={180} height={180} />
+      {/* <Image src='/empty-canvas.svg' alt='empty' width={180} height={180} /> */}
       <h2 className='mt-6 text-2xl font-semibold'>Create your first canvas!</h2>
       <p className='mt-2 text-sm text-muted-foreground'>
         Start by creating a cavas for your organization

@@ -2,9 +2,9 @@ import type { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { cn } from '@/lib/utils';
-import ConvexClientProvider from '@/providers/convex-client-provider';
 import { Toaster } from '@/components/ui/sonner';
+import ConvexClientProvider from '@/providers/convex-client-provider';
+import { cn } from '@/lib/utils';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
