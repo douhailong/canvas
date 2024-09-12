@@ -2,7 +2,9 @@ import { useQuery } from 'convex/react';
 
 import { api } from '@/convex/_generated/api';
 import { EmptyCanvas, EmptyFavorites, EmptyQuery } from './empty';
-import BoardCard from './board-card';
+import { BoardCard } from './board-card';
+import { create } from './../../../convex/board';
+import AddBoardButton from './add-board-button';
 
 type CanvasListProps = {
   orgId: string;
@@ -37,8 +39,19 @@ const CanvasList: React.FC<CanvasListProps> = ({ orgId, query }) => {
         {query.favorites ? 'Favorite board' : 'Team board'}
       </h2>
       <ul className='mt-8 grid grid-cols-1 gap-5 pb-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
+        <AddBoardButton orgId={orgId} />
         {data.map(board => (
-          <BoardCard key={board._id} />
+          <BoardCard
+            key={board._id}
+            id={board._id}
+            title={board.title}
+            imageUrl={board.imageUrl}
+            authorId={board.authorId}
+            authorName={board.authorName}
+            createdAt={board._creationTime}
+            orgId={orgId}
+            isFavorite={false}
+          />
         ))}
       </ul>
     </div>

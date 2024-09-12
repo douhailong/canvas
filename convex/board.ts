@@ -2,7 +2,12 @@ import { v } from 'convex/values';
 
 import { mutation } from './_generated/server';
 
-const images = ['/placeholders/1.svg'];
+const images = [
+  '/empty-canvas.svg',
+  '/empty-favorites.svg',
+  '/empty-organiz.svg',
+  '/empty-query.svg'
+];
 
 export const create = mutation({
   args: { orgId: v.string(), title: v.string() },
