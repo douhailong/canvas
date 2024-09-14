@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 
 import { Toaster } from '@/components/ui/sonner';
 import ConvexClientProvider from '@/providers/convex-client-provider';
+import ModalProvider from '@/providers/modal-provider';
 import { cn } from '@/lib/utils';
 import './globals.css';
 
@@ -19,6 +20,7 @@ const RootLayout = ({ children }: PropsWithChildren) => (
   <html lang='en'>
     <body className={cn('h-full font-sans antialiased', inter.className)}>
       <Toaster />
+      <ModalProvider />
       <ConvexClientProvider>{children}</ConvexClientProvider>
     </body>
   </html>

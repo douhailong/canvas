@@ -1,7 +1,7 @@
 'use client';
 
 import type { DropdownMenuContentProps } from '@radix-ui/react-dropdown-menu';
-import { Link2, Trash2 } from 'lucide-react';
+import { Link2, Pencil, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useMutation } from 'convex/react';
 import { api } from '@/convex/_generated/api';
@@ -16,6 +16,7 @@ import {
 } from './dropdown-menu';
 import ConfirmModal from './confirm-modal';
 import { Button } from './button';
+import { useRenameModal } from '@/store/use-rename-modal';
 
 type ActionsProps = {
   children: React.ReactNode;
@@ -33,6 +34,7 @@ const Actions: React.FC<ActionsProps> = ({
   title
 }) => {
   const remove = useMutation(api.board.remove);
+  const { onOpen } = useRenameModal();
 
   const onCopyLink = () => {
     navigator.clipboard
@@ -60,7 +62,6 @@ const Actions: React.FC<ActionsProps> = ({
           <Link2 className='ml-1 mr-2 h-4 w-4' />
           Copy board link
         </DropdownMenuItem>
-
         <ConfirmModal
           header='Delete board?'
           description='This will delete the board and all of its contents.'
@@ -75,6 +76,13 @@ const Actions: React.FC<ActionsProps> = ({
             Delete
           </Button>
         </ConfirmModal>
+        <DropdownMenuItem
+          className='cursor-pointe2'
+          onClick={() => onOpen(id, title)}
+        >
+          <Pencil className='ml-1 mr-2 h-4 w-4' />
+          Rename
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
