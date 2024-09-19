@@ -8,6 +8,10 @@ import { useAuth } from '@clerk/nextjs';
 import { Skeleton } from '@/components/ui/skeleton';
 import Actions from '@/components/ui/actions';
 import { MoreHorizontal } from 'lucide-react';
+import { useMutation } from 'convex/react';
+import { api } from '@/convex/_generated/api';
+import { Id } from '@/convex/_generated/dataModel';
+import { toast } from 'sonner';
 
 type BoardCardProps = {
   id: string;
@@ -31,9 +35,23 @@ const BoardCard = ({
   isFavorite
 }: BoardCardProps) => {
   const { userId } = useAuth();
+  const favorite = useMutation(api.board.favorite);
+  const unfavorite = useMutation(api.board.unfavorite);
 
   const authorLabel = authorId === userId ? 'You' : authorName;
   const createdAtLabel = formatDistanceToNow(createdAt, { addSuffix: true });
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      unfavorite({ id: id as Id<'boards'> }).catch(() =>
+        toast.error('Failed to unfavorite')
+      );
+    } else {
+      favorite({ id: id as Id<'boards'>, orgId }).catch(() =>
+        toast.error('Failed to favorite')
+      );
+    }
+  };
 
   return (
     <Link href={`/board/${id}`}>
@@ -53,7 +71,7 @@ const BoardCard = ({
           isFavorite={isFavorite}
           title={title}
           disabled={false}
-          onClick={() => {}}
+          onClick={toggleFavorite}
         />
       </div>
     </Link>

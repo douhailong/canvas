@@ -15,7 +15,13 @@ type CanvasListProps = {
 };
 
 const CanvasList: React.FC<CanvasListProps> = ({ orgId, query }) => {
-  const data = useQuery(api.boards.get, { orgId });
+  const data = useQuery(api.boards.get, {
+    orgId,
+    query: query.query,
+    favorites: query.favorites
+  });
+
+  console.log(data,'dddddddddddddddd');
 
   if (data === undefined) {
     return (
@@ -63,7 +69,7 @@ const CanvasList: React.FC<CanvasListProps> = ({ orgId, query }) => {
             authorName={board.authorName}
             createdAt={board._creationTime}
             orgId={orgId}
-            isFavorite={false}
+            isFavorite={board.isFavorite}
           />
         ))}
       </ul>

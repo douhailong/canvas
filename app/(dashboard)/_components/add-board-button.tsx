@@ -1,6 +1,7 @@
 import { api } from '@/convex/_generated/api';
 import { cn } from '@/lib/utils';
 import { useMutation } from 'convex/react';
+import { useRouter } from 'next/navigation';
 import { Plus } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -10,6 +11,7 @@ type AddBoardButtonProps = {
 };
 
 const AddBoardButton: React.FC<AddBoardButtonProps> = ({ orgId, disabled }) => {
+  const router = useRouter();
   const create = useMutation(api.board.create);
 
   const onClick = () => {
@@ -17,7 +19,10 @@ const AddBoardButton: React.FC<AddBoardButtonProps> = ({ orgId, disabled }) => {
       title: 'Untitled',
       orgId: orgId
     })
-      .then(() => toast.success('Board created'))
+      .then(id => {
+        toast.success('Board created');
+        router.push(`/board/${id}`);
+      })
       .catch(() => toast.error('Failed to create board'));
   };
 

@@ -20,8 +20,10 @@ const RootLayout = ({ children }: PropsWithChildren) => (
   <html lang='en'>
     <body className={cn('h-full font-sans antialiased', inter.className)}>
       <Toaster />
-      <ModalProvider />
-      <ConvexClientProvider>{children}</ConvexClientProvider>
+      <ConvexClientProvider>
+        <ModalProvider />
+        {children}
+      </ConvexClientProvider>
     </body>
   </html>
 );

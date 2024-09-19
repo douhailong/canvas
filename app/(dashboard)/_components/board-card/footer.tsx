@@ -30,6 +30,11 @@ const Footer: React.FC<FooterProps> = ({
           'absolute right-3 top-3 text-muted-foreground opacity-0 transition-opacity hover:text-blue-600 group-hover:opacity-100',
           disabled && 'cursor-not-allowed opacity-75'
         )}
+        onClick={(e)=>{
+          e.stopPropagation()
+          e.preventDefault()
+          onClick()
+        }}
       >
         <Star
           className={cn('h-4 w-4', isFavorite && 'fill-blue-600 text-blue-600')}

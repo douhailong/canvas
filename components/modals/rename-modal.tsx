@@ -18,6 +18,7 @@ import { Button } from '../ui/button';
 import { useMutation } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 import { Id } from '@/convex/_generated/dataModel';
+import { toast } from 'sonner';
 
 const RenameModal = ({}) => {
   const { isOpen, onClose, onOpen, initialValues } = useRenameModal();
@@ -32,7 +33,12 @@ const RenameModal = ({}) => {
   const onSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
 
-    update({ id: initialValues.id as Id<'boards'>, title });
+    update({ id: initialValues.id as Id<'boards'>, title })
+      .then(() => {
+        toast.success('Board renamed');
+        onClose();
+      })
+      .catch(() => toast.error('Failed to rename board'));
   };
 
   return (
