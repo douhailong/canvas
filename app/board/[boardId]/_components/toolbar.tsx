@@ -1,5 +1,3 @@
-import { Skeleton } from '@/components/ui/skeleton';
-
 const Toolbar = () => {
   return (
     <div className='absolute left-2 top-1/2 flex -translate-y-1/2 flex-col gap-y-4'>
