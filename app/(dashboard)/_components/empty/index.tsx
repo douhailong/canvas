@@ -1,4 +1,4 @@
-export { default as EmptyOrganiz } from './empty-organiz';
-export { default as EmptyQuery } from './empty-query';
-export { default as EmptyBoard } from './empty-board';
-export { default as EmptyFavorites } from './empty-favorites';
+export { default as SearchEmpty } from './search-empty';
+export { default as FavoriteEmpty } from './favorite-empty';
+export { default as GroupEmpty } from './group-empty';
+export { default as BoardEmpty } from './board-empty';

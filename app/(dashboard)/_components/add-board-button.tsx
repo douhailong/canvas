@@ -1,9 +1,10 @@
-import { api } from '@/convex/_generated/api';
-import { cn } from '@/lib/utils';
-import { useMutation } from 'convex/react';
 import { useRouter } from 'next/navigation';
+import { useMutation } from 'convex/react';
 import { Plus } from 'lucide-react';
 import { toast } from 'sonner';
+
+import { api } from '@/convex/_generated/api';
+import { cn } from '@/lib/utils';
 
 type AddBoardButtonProps = {
   orgId: string;
@@ -35,7 +36,6 @@ const AddBoardButton: React.FC<AddBoardButtonProps> = ({ orgId, disabled }) => {
       disabled={disabled}
       onClick={onClick}
     >
-      {/* <div /> */}
       <Plus className='h-12 w-12 stroke-1 text-white' />
       <p className='text-sm font-light text-white'>New board</p>
     </button>

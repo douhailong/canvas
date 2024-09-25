@@ -1,16 +1,12 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { Poppins } from 'next/font/google';
 import { useSearchParams } from 'next/navigation';
 import { OrganizationSwitcher } from '@clerk/nextjs';
 import { LayoutDashboard, Star } from 'lucide-react';
 
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-
-const font = Poppins({ weight: '600', subsets: ['latin'] });
 
 const rootBox = {
   display: 'flex',
@@ -27,17 +23,13 @@ const organizationSwitcherTrigger = {
   backgroundColor: 'white'
 };
 
-const OrgSidebar = () => {
+const ToolBar = () => {
   const searchParams = useSearchParams();
 
   const favorites = searchParams.get('favorites');
 
   return (
-    <div className='hidden w-[206px] flex-col space-y-6 pl-5 pt-5 lg:flex'>
-      <Link href='/' className='flex items-center gap-x-2'>
-        <Image src='/logo.svg' alt='logo' height={30} width={30} />
-        <h1 className={cn('text-2xl font-semibold', font.className)}>Canvas</h1>
-      </Link>
+    <>
       <OrganizationSwitcher
         hidePersonal
         appearance={{
@@ -80,8 +72,8 @@ const OrgSidebar = () => {
           Favorite board
         </Link>
       </div>
-    </div>
+    </>
   );
 };
 
-export default OrgSidebar;
+export default ToolBar;

@@ -1,10 +1,4 @@
-'use client';
-
-import {
-  OrganizationSwitcher,
-  UserButton,
-  useOrganization
-} from '@clerk/nextjs';
+import { OrganizationSwitcher, UserButton } from '@clerk/nextjs';
 
 import SearchInput from './search-input';
 import InviteButton from './invite-button';
@@ -25,9 +19,7 @@ const organizationSwitcherTrigger = {
   backgroundColor: 'white'
 };
 
-const Navbar = () => {
-  const { organization } = useOrganization();
-
+const HeadBar = () => {
   return (
     <header className='flex items-center space-x-3 p-5'>
       <div className='hidden lg:flex lg:flex-1'>
@@ -44,10 +36,10 @@ const Navbar = () => {
           }}
         />
       </div>
-      {organization && <InviteButton />}
+      <InviteButton />
       <UserButton />
     </header>
   );
 };
 
-export default Navbar;
+export default HeadBar;

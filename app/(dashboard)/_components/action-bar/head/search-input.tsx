@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useDebounceValue } from 'usehooks-ts';
 import { useRouter } from 'next/navigation';
+import { useDebounceValue } from 'usehooks-ts';
 import { Search } from 'lucide-react';
 import qs from 'query-string';
 

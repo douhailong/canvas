@@ -2,7 +2,7 @@
 
 import { useOrganization } from '@clerk/nextjs';
 
-import { EmptyOrganiz } from './_components/empty';
+import { GroupEmpty } from './_components/empty';
 import BoardList from './_components/board-list';
 
 type PageProps = {
@@ -20,7 +20,7 @@ const Page: React.FC<PageProps> = ({ searchParams }) => {
       {organization ? (
         <BoardList orgId={organization.id} query={searchParams} />
       ) : (
-        <EmptyOrganiz />
+        <GroupEmpty />
       )}
     </div>
   );

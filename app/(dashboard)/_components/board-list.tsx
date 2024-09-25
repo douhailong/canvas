@@ -1,9 +1,10 @@
+'use client';
+
 import { useQuery } from 'convex/react';
 
 import { api } from '@/convex/_generated/api';
-import { EmptyBoard, EmptyFavorites, EmptyQuery } from './empty';
+import { BoardEmpty, FavoriteEmpty, SearchEmpty } from './empty';
 import { BoardCard } from './board-card';
-import { create } from '../../../convex/board';
 import AddBoardButton from './add-board-button';
 
 type BoardListProps = {
@@ -39,15 +40,15 @@ const BoardList: React.FC<BoardListProps> = ({ orgId, query }) => {
   }
 
   if (!data.length && query.query) {
-    return <EmptyQuery />;
+    return <SearchEmpty />;
   }
 
   if (!data.length && query.favorites) {
-    return <EmptyFavorites />;
+    return <FavoriteEmpty />;
   }
 
   if (!data.length) {
-    return <EmptyBoard />;
+    return <BoardEmpty />;
   }
 
   return (

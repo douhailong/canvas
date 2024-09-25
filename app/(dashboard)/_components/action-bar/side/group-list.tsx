@@ -6,13 +6,13 @@ import { useOrganizationList, useOrganization } from '@clerk/nextjs';
 import Hint from '@/components/ui/hint';
 import { cn } from '@/lib/utils';
 
-type ItemProps = {
+type GroupProps = {
   id: string;
   name: string;
   imageUrl: string;
 };
 
-const Item: React.FC<ItemProps> = ({ id, name, imageUrl }) => {
+const Group: React.FC<GroupProps> = ({ id, name, imageUrl }) => {
   const { organization } = useOrganization();
   const { setActive } = useOrganizationList();
 
@@ -36,19 +36,21 @@ const Item: React.FC<ItemProps> = ({ id, name, imageUrl }) => {
   );
 };
 
-const OrganizList = () => {
+const GroupList = () => {
   const { userMemberships } = useOrganizationList({
     userMemberships: {
       infinite: true
     }
   });
 
-  if (!userMemberships.data?.length) return null;
+  if (!userMemberships.data?.length) {
+    return null;
+  }
 
   return (
     <ul className='space-y-4'>
       {userMemberships.data.map(member => (
-        <Item
+        <Group
           key={member.organization.id}
           id={member.organization.id}
           name={member.organization.name}
@@ -59,4 +61,4 @@ const OrganizList = () => {
   );
 };
 
-export default OrganizList;
+export default GroupList;
