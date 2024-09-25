@@ -3,10 +3,10 @@ import { v } from 'convex/values';
 import { mutation, query } from './_generated/server';
 
 const images = [
-  '/empty-canvas.svg',
-  '/empty-favorites.svg',
-  '/empty-organiz.svg',
-  '/empty-query.svg'
+  '/placeholders/1.svg',
+  '/placeholders/2.svg',
+  '/placeholders/3.svg',
+  '/placeholders/4.svg'
 ];
 
 export const create = mutation({

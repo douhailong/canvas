@@ -2,9 +2,9 @@
 
 import {
   LiveblocksProvider,
-  RoomProvider,
   ClientSideSuspense
 } from '@liveblocks/react/suspense';
+import { RoomProvider } from '@/liveblocks.config';
 
 type RoomProps = {
   roomId: string;

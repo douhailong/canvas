@@ -1,12 +1,12 @@
 import { useQuery } from 'convex/react';
 
 import { api } from '@/convex/_generated/api';
-import { EmptyCanvas, EmptyFavorites, EmptyQuery } from './empty';
+import { EmptyBoard, EmptyFavorites, EmptyQuery } from './empty';
 import { BoardCard } from './board-card';
-import { create } from './../../../convex/board';
+import { create } from '../../../convex/board';
 import AddBoardButton from './add-board-button';
 
-type CanvasListProps = {
+type BoardListProps = {
   orgId: string;
   query: {
     query?: string;
@@ -14,14 +14,12 @@ type CanvasListProps = {
   };
 };
 
-const CanvasList: React.FC<CanvasListProps> = ({ orgId, query }) => {
+const BoardList: React.FC<BoardListProps> = ({ orgId, query }) => {
   const data = useQuery(api.boards.get, {
     orgId,
     query: query.query,
     favorites: query.favorites
   });
-
-  console.log(data,'dddddddddddddddd');
 
   if (data === undefined) {
     return (
@@ -49,7 +47,7 @@ const CanvasList: React.FC<CanvasListProps> = ({ orgId, query }) => {
   }
 
   if (!data.length) {
-    return <EmptyCanvas />;
+    return <EmptyBoard />;
   }
 
   return (
@@ -77,4 +75,4 @@ const CanvasList: React.FC<CanvasListProps> = ({ orgId, query }) => {
   );
 };
 
-export default CanvasList;
+export default BoardList;

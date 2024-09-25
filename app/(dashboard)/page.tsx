@@ -3,7 +3,7 @@
 import { useOrganization } from '@clerk/nextjs';
 
 import { EmptyOrganiz } from './_components/empty';
-import CanvasList from './_components/canvas-list';
+import BoardList from './_components/board-list';
 
 type PageProps = {
   searchParams: {
@@ -18,7 +18,7 @@ const Page: React.FC<PageProps> = ({ searchParams }) => {
   return (
     <div className='h-[calc(100%-80px)] p-6'>
       {organization ? (
-        <CanvasList orgId={organization.id} query={searchParams} />
+        <BoardList orgId={organization.id} query={searchParams} />
       ) : (
         <EmptyOrganiz />
       )}
