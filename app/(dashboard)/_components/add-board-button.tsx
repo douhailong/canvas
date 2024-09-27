@@ -1,3 +1,5 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
 import { useMutation } from 'convex/react';
 import { Plus } from 'lucide-react';
