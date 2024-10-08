@@ -18,7 +18,16 @@ type RoomEvent = {};
 type ThreadMetadata = {};
 
 export const {
-  suspense: { RoomProvider, useMyPresence, useStorage, useSelf, useOthers }
+  suspense: {
+    RoomProvider,
+    useMyPresence,
+    useStorage,
+    useSelf,
+    useOthers,
+    useHistory,
+    useCanRedo,
+    useCanUndo
+  }
 } = createRoomContext<Presence, Storage, UserMeta, RoomEvent, ThreadMetadata>(
   client
 );
