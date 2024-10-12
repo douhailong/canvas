@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Info from './info';
 import Participants from './participants';
 import Toolbar from './toolbar';
+import CursorsPresence from './cursors-presence';
 import { useHistory, useCanUndo, useCanRedo } from '@/liveblocks.config';
 import { type CanvasState, CanvasMode } from '@/types/canvas';
 
@@ -33,6 +34,11 @@ const Canvas: React.FC<CanvasProps> = ({ boardId }) => {
         canUndo={canUndo}
         canRedo={canRedo}
       />
+      <svg className='h-screen w-screen'>
+        <g>
+          <CursorsPresence />
+        </g>
+      </svg>
     </main>
   );
 };

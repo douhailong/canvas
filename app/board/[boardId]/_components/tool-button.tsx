@@ -26,7 +26,7 @@ const ToolButton: React.FC<ToolButtonProps> = ({
         disabled={disabled}
         onClick={onClick}
         size='icon'
-        variant={isActive ? 'secondary' : 'ghost'}
+        variant={isActive ? 'board' : 'ghost'}
       >
         <Icon className='text-gray-800' />
       </Button>

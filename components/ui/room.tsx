@@ -15,7 +15,7 @@ type RoomProps = {
 const Room: React.FC<RoomProps> = ({ children, roomId, fallback }) => {
   return (
     <LiveblocksProvider publicApiKey='pk_prod_vRf2piZtsEZvR-Hjy6BawczWw2mKhasllxZd6bhGGh88j3eJ4sr2P_sbndbAfTqd'>
-      <RoomProvider id={roomId}>
+      <RoomProvider id={roomId} initialPresence={{ cursor: null }}>
         <ClientSideSuspense fallback={fallback}>{children}</ClientSideSuspense>
       </RoomProvider>
     </LiveblocksProvider>

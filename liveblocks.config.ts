@@ -5,7 +5,9 @@ const client = createClient({
   authEndpoint: '/api/liveblocks-auth'
 });
 
-type Presence = {};
+type Presence = {
+  cursor: { x: number; y: number } | null;
+};
 type Storage = {};
 type UserMeta = {
   id?: string;
@@ -24,9 +26,11 @@ export const {
     useStorage,
     useSelf,
     useOthers,
+    useOther,
     useHistory,
     useCanRedo,
-    useCanUndo
+    useCanUndo,
+    useOthersConnectionIds
   }
 } = createRoomContext<Presence, Storage, UserMeta, RoomEvent, ThreadMetadata>(
   client
