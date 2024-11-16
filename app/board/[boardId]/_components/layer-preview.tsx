@@ -21,7 +21,7 @@ const LayerPreview: React.FC<LayerPreviewProps> = ({
     return null;
   }
 
-  return <div>LayerPreview</div>;
+  return <div>LayerPreview1</div>;
 };
 
 LayerPreview.displayName = 'LayerPreview';
