@@ -8,6 +8,7 @@ import { pointerEventToCanvasPoint } from '@/lib/utils';
 import Info from './info';
 import Participants from './participants';
 import Toolbar from './toolbar';
+import LayerPreview from './layer-preview';
 import CursorsPresence from './cursors-presence';
 import {
   useHistory,
@@ -94,9 +95,9 @@ const Canvas: React.FC<CanvasProps> = ({ boardId }) => {
     ({ setMyPresence }, e: React.PointerEvent) => {
       e.preventDefault();
 
-      const current = pointerEventToCanvasPoint(e, camera);
+      const point = pointerEventToCanvasPoint(e, camera);
 
-      setMyPresence({ cursor: current });
+      setMyPresence({ cursor: point });
     },
     []
   );
@@ -106,7 +107,19 @@ const Canvas: React.FC<CanvasProps> = ({ boardId }) => {
     []
   );
 
-  const onPointerUp = useMutation(({}, e) => {}, []);
+  const onPointerUp = useMutation(
+    ({}, e: React.PointerEvent) => {
+      const point = pointerEventToCanvasPoint(e, camera);
+
+      if (canvasState.mode === CanvasMode.Inserting) {
+        insertLayer(canvasState.layerType, point);
+      } else {
+        setCanvasState({ mode: CanvasMode.None });
+      }
+      history.resume();
+    },
+    [camera, canvasState, history, insertLayer]
+  );
 
   return (
     <main className='relative h-full w-full touch-none bg-neutral-100'>
@@ -125,8 +138,17 @@ const Canvas: React.FC<CanvasProps> = ({ boardId }) => {
         onWheel={onWheel}
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
+        onPointerUp={onPointerUp}
       >
         <g>
+          {layerIds.map(layerId => (
+            <LayerPreview
+              key={layerId}
+              id={layerId}
+              onLayerPointerDown={() => {}}
+              selectedColor='#000'
+            />
+          ))}
           <CursorsPresence />
         </g>
       </svg>
