@@ -10,8 +10,6 @@ const Participants = () => {
   const users = useOthers();
   // const users = [self, self, self, self];
 
-  console.log(self, users);
-
   const hasMoreUsers = users.length > MAX_NUM;
 
   return (

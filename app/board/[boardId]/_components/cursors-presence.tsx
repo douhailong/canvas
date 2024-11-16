@@ -10,6 +10,8 @@ type CursorsPresenceProps = {};
 const Cursors = () => {
   const ids = useOthersConnectionIds();
 
+  console.log(ids, 'ids idsv');
+
   return (
     <>
       {ids.map(connectionId => (
@@ -20,11 +22,7 @@ const Cursors = () => {
 };
 
 const CursorsPresence: React.FC<CursorsPresenceProps> = memo(({}) => {
-  return (
-    <p>
-      <Cursors />
-    </p>
-  );
+  return <Cursors />;
 });
 
 CursorsPresence.displayName = 'CursorsPresence';
